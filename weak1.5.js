@@ -20,11 +20,10 @@
 // }
 // console.log("Jay Shree Ram",a);
 
-//? Async Function  -> SetTimeOut
+//? Async Function  -> file system
 
 // const fs = require('fs');
 // fs.readFile('a.txt', 'utf-8', function(err, data){
-//     // console.log(err);
 //     console.log(data);
 // });
 
@@ -57,12 +56,9 @@
 
 // const fs = require("fs");
 // function ReadFile(callback) {
-//   let text = "Hello";
 //   fs.readFile("a.txt", "utf-8", function (err, data) {
 //     callback(data);
-//     text = "hii";
 //   });
-//   return text;
 // }
 
 // function printData(data) {
@@ -79,7 +75,6 @@
 //   return new Promise((resolve, reject) => {
 //     console.log('inside promise')
 //     fs.readFile("a.txt", "utf-8", function (err, data) {
-//       console.log('readfile async')
 //       resolve(data);
 //     });
 //   });

@@ -1,3 +1,5 @@
+//? This Weak all  about Callbacks
+
 // let ans  =0;
 // for (let i = 1; i <= 100; i++)
 //     ans += i;
@@ -40,7 +42,7 @@
 
 
 //? Here Simple write this code 
-//callback function 
+//?callback function 
  
 // function sum (a,b,fn){
 //     let va  = fn(a);
