@@ -66,15 +66,15 @@
 
 
 
-const express = require("express");
-const app = express();
-const zod = require("zod");
+// const express = require("express");
+// const app = express();
+// const zod = require("zod");
 
-app.use(express.json());
-const schema = zod.object({
-    email: zod.email(),
-    password: zod.string().min(8)
-});
+// app.use(express.json());
+// const schema = zod.object({
+//     email: zod.email(),
+//     password: zod.string().min(8)
+// });
 
 
 
@@ -96,20 +96,20 @@ const schema = zod.object({
 // console.log(res)
 
 
-app.get("/", (req, res) => {
-  const login  = req.body;
-  const response = schema.safeParse(login);
+// app.get("/", (req, res) => {
+//   const login  = req.body;
+//   const response = schema.safeParse(login);
 
-  if (!response.success){
-    return res.status(411).json({
-      response
-    })
-  } 
+//   if (!response.success){
+//     return res.status(411).json({
+//       response
+//     })
+//   } 
 
 
-  res.json({
-    response,
-  });
-});
+//   res.json({
+//     response,
+//   });
+// });
 
-app.listen(3000, () => console.log("Server Runing"));
+// app.listen(3000, () => console.log("Server Runing"));
