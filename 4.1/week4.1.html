@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fetch Call</title>
+  </head>
+
+  <body>
+    <input oninput="debounceCall()" id="1" type="text" placeholder="Enter Your Price" />
+    <br />
+    <input oninput="debounceCall()" id="2" type="text" placeholder="Enter Your rate" />
+    <br />
+    <input
+      oninput="debounceCall()"
+      id="3"
+      type="text"
+      placeholder="Enter Your Time in Years"
+    />
+    <br />
+    <span id="result">0</span>
+
+    <script>
+
+      let id= "";
+      function debounceCall(){
+        clearInterval(id);
+        id= setTimeout(() => {
+          sum()
+        }, 200);
+        console.log(id)
+      }
+      async function sum() {
+        const a = document.getElementById("1").value;
+        const b = document.getElementById("2").value;
+        const c = document.getElementById("3").value;
+        try {
+          const data = await fetch(
+            `http://localhost:5500/intrest/?p=${a}&r=${b}&t=${c}`
+          );
+          const response = await data.text();
+          document.getElementById("result").innerText = response;
+        } catch (error) {
+          console.log(error);
+        }
+      }
+    </script>
+  </body>
+</html>
