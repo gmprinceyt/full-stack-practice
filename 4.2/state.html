@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todu App</title>
+  </head>
+  <body>
+    <div class="create">
+      <input type="text" name="" id="title" placeholder="title" />
+      <input type="text" name="" id="description" placeholder="description" />
+      <button onclick="createTodo()">Add Todo</button>
+    </div>
+    <div class="todos"></div>
+
+    <script src="todo.js"></script>
+    <script>
+
+        const container = document.querySelector(".todos");
+
+        window.Todus.forEach((todo) => {
+          const todoElement = createElement(
+            todo.title,
+            todo.description,
+            todo.id
+          );
+          container.appendChild(todoElement);
+        });
+
+
+
+
+
+      function createElement(title, description, id) {
+        const mainChild = document.createElement("div");
+        mainChild.setAttribute("id", id);
+
+        const titleChild = document.createElement("h2");
+        titleChild.innerText = title;
+
+        const descriptionChild = document.createElement("p");
+        descriptionChild.innerText = description;
+
+        mainChild.appendChild(titleChild);
+        mainChild.appendChild(descriptionChild);
+        return mainChild;
+      }
+
+    
+    </script>
+  </body>
+</html>

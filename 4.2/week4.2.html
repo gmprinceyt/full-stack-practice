@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo List</title>
+  </head>
+  <body style="background-color: black; color: white">
+    <div class="">
+      <input type="text" name="" id="title" placeholder="title" />
+      <input type="text" name="" id="description" placeholder="description" />
+      <button onclick="addTodo()">Add Todo</button>
+
+      <div id="todos"></div>
+    </div>
+
+    <script>
+      let id = 0;
+
+      function markDone(id) {
+        const perent = document.getElementById(id);
+
+        perent.children[2].innerText = "Done Task. ";
+      }
+
+      function deleteTodo(id) {
+        const parent = document.getElementById(id).remove();
+        alert("Deleted Successfully");
+      }
+
+      function UpdateTodo(id){
+        const perent = document.getElementById(id);
+
+        perent.children[0].innerText = prompt("Enter new title", perent.children[0].innerText);
+        perent.children[1].innerText = prompt("Enter new description", perent.children[1].innerText);
+        alert("Updated Successfully");
+      }
+
+      function createElement(title, description, id) {
+        const mainChild = document.createElement("div");
+
+        const titlechild = document.createElement("h2");
+        titlechild.innerText = title;
+
+        const descriptionchild = document.createElement("b");
+        descriptionchild.innerText = description;
+        descriptionchild.innerText += ` \n ${new Date().toLocaleTimeString()}`;
+
+        const deleteChild = document.createElement("button");
+        deleteChild.innerText = "delete";
+        deleteChild.setAttribute("onclick", `deleteTodo(${id})`);
+
+        const updateTodoChild = document.createElement("button");
+        updateTodoChild.innerText = "Update";
+        updateTodoChild.setAttribute("onclick", `UpdateTodo(${id})`);
+
+        const markDoneButtonChild = document.createElement("button");
+        markDoneButtonChild.innerText = "Mark As a Done !";
+        markDoneButtonChild.setAttribute("onclick", `markDone(${id})`);
+
+
+        mainChild.setAttribute("id", id);
+        mainChild.appendChild(titlechild);
+        mainChild.appendChild(descriptionchild);
+        mainChild.appendChild(markDoneButtonChild);
+        mainChild.appendChild(deleteChild);
+        mainChild.appendChild(updateTodoChild);
+
+        return mainChild;
+      }
+      function addTodo() {
+        const title = document.getElementById("title").value;
+        const description = document.getElementById("description").value;
+        const container = document.getElementById("todos");
+
+        container.appendChild(createElement(title, description, id++));
+      }
+    </script>
+  </body>
+</html>
