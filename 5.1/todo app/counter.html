@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter example </title>
+</head>
+<body>
+    <div id="parent"></div>
+
+    <script>
+        // Simple State initialisation
+        // This is a basic example of how you can manage state in a vanilla JavaScript application
+        let state = {
+            count: 0
+        };
+
+        // Function to handle button click
+        // This function updates the state and re-renders the component
+        function handleClick() {
+            state.count += 1;
+            render();
+        };
+
+        // Render function
+        // This function creates the button component and appends it to the parent element
+        function render(){
+            const parent = document.getElementById('parent');
+            parent.innerHTML = '';    // Clear previous content
+            const Button = ButtonComponent(state);
+            parent.appendChild(Button);
+        }
+
+
+        // Button component
+        // This function creates a button element with the current count and an onclick event
+        function ButtonComponent(state) {
+            const button = document.createElement('button');
+            button.textContent = `Count: ${state.count}`;
+            button.setAttribute('onclick', 'handleClick()');
+            return button;
+        };
+
+        render();
+    </script>
+</body>
+</html>

@@ -23,7 +23,7 @@
       const element = document.getElementById(oldTodo.id);
       element.children[0].innerHTML = newTodo.title;
       element.children[1].innerHTML = newTodo.description;
-      element.children[0].innerHTML = newTodo.completed ? "Mark as done" : "Done";
+      element.children[2].innerHTML = newTodo.completed ? "Mark as done" : "Done";
     }
 
     function updateState(newTodos) {
