@@ -1,57 +1,37 @@
-import React from 'react'
 
 const App = () => {
   return (
     <div>
-      <Wrapper innerComponent={<Text/>} />
-      <Wrapper innerComponent={<Text2/>} />
+      <Wrapper>
+        <Text />
+      </Wrapper>
+      <Wrapper>
+        <Text2 />
+      </Wrapper>
     </div>
-  )
-}
-const Wrapper = ({innerComponent}) => {
+  );
+};
+const Wrapper = ({ children }) => {
   return (
-    <div style={{
-      border: "2px solid black",
-      padding: "20px"
-    }}>
-      {innerComponent}
+    <div
+      style={{
+        border: "2px solid black",
+        padding: "20px",
+        margin: "20px"
+      }}
+    >
+      {children}
     </div>
-  )
-}
+  );
+};
 const Text = () => {
-  return (
-    <div>
-      hii there
-    </div>
-  )
-}
+  return <div>hii there</div>;
+};
 const Text2 = () => {
-  return (
-    <div>
-      hii there2
-    </div>
-  )
-}
+  return <div>hii there2</div>;
+};
 
-
-export default App
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+export default App;
 
 // import React, { useState } from "react";
 
