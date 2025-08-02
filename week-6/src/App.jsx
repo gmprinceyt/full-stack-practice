@@ -4,13 +4,15 @@ const App = () => {
   return (
     <div>
       <Wrapper innerComponent={<Text/>} />
+      <Wrapper innerComponent={<Text2/>} />
     </div>
   )
 }
 const Wrapper = ({innerComponent}) => {
   return (
     <div style={{
-      border: "2px solid black"
+      border: "2px solid black",
+      padding: "20px"
     }}>
       {innerComponent}
     </div>
@@ -20,6 +22,13 @@ const Text = () => {
   return (
     <div>
       hii there
+    </div>
+  )
+}
+const Text2 = () => {
+  return (
+    <div>
+      hii there2
     </div>
   )
 }
