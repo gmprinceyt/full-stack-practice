@@ -1,5 +1,88 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useMemo, useState } from "react";
 
+
+//? UseMemo vs UseEffect 
+
+/**
+ * | Use When...                                                                       | Hook        |
+| --------------------------------------------------------------------------------- | ----------- |
+| You want to compute a value and **avoid re-renders**                              | `useMemo`   |
+| You need to **perform a side effect** (like fetching, setting title, or DOM work) | `useEffect` |
+| You **need to update state** based on a side effect                               | `useEffect` |
+| You only need the **computed value in render**                                    | `useMemo`   |
+
+ */
+
+
+// const App = () => {
+//   const [num, setNum] = useState(1000000);
+//   const [count, setCount] = useState(0);
+
+//   const expensiveSum = useMemo(() => {
+//     console.log("Calculating sum...");
+//     let sum = 0;
+//     for (let i = 1; i <= num; i++) {
+//       sum += i;
+//     }
+//     return sum;
+//   }, [num]);
+
+//   useEffect(() => {
+//     document.title = `Count: ${count}`;
+//   }, [count]);
+
+//   return (
+//     <div>
+//       <h1>Sum: {expensiveSum}</h1>
+//       <button onClick={() => setCount(count + 1)}>Count {count}</button>
+//       <input
+//         type="number"
+//         value={num}
+//         onChange={(e) => setNum(Number(e.target.value))}
+//       />
+//     </div>
+//   );
+// };
+
+// export default App;
+
+//? UseMemo
+
+// const App = () => {
+//   const [count, setCount] = useState(0);
+//   const [input, setinput] = useState();
+//   const [sum, setSumOne] = useState(0);
+
+//   // const sum = useMemo(() => {
+//   //   let sum = 0;
+//   //   console.log("Hello");
+//   //   for (let i = 1; i <= input; i++) {
+//   //     sum = sum + i;
+//   //   }
+//   //   return sum
+//   // }, [input]);
+
+
+//   return (
+//     <div>
+//       <input type="text" onChange={(e) => setinput(e.target.value)} />
+//       <p>sum of {sum}</p>
+//       <button onClick={() => setCount(count + 1)}>Count {count}</button>
+//     </div>
+//   );
+// };
+
+// function Demo({a}){
+//   return (
+//     <div className="">
+//       Hi there
+//     </div>
+//   )
+// }
+
+// export default App;
+
+//? UseEffect
 // const App = () => {
 //   const [id , setId] = useState(0)
 //   return (
@@ -33,4 +116,4 @@ import React, { useEffect, useState } from 'react'
 //   )
 // }
 
-export default App
+// export default App
