@@ -7,6 +7,20 @@ import React, { useState } from 'react'
  * 
  */
 
+/**
+ * ✅ How to Explain in Interview:
+ * "Props drilling happens when we need to send data from a parent to a deep child, 
+ * but we have to pass that data through many components in between. 
+ * Those middle components don’t use the data—they just pass it forward. 
+ * It can make the code messy and harder to manage. 
+ * That’s why we use solutions like Context API, Redux, or Zustand to avoid props drilling."
+ */
+
+/**
+ * ✅ One-line Summary:
+“Props drilling is when we pass data through many layers of components just to reach the one that actually needs it.”
+ */
+
 
 const Count = () => {
     const [Count , setCount ] = useState(0)
