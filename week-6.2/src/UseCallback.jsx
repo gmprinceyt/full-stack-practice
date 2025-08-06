@@ -1,5 +1,23 @@
-import { memo, useCallback,  useState } from "react";
+import { useCallback, useState } from "react";
 
+const UseCallback = () => {
+  const [count, setcount] = useState(0);
+
+  const increament = useCallback(() => {
+    setcount(count + 1);
+  }, [count]);
+
+  return (
+    <div>
+      <p>Count is {count}</p>
+      <Demo1 click={increament} />
+    </div>
+  );
+};
+
+function Demo1({ click }) {
+  return <button onClick={click}>Click</button>;
+}
 
 /**
 * | `useCallback` is useful when:                           |
@@ -10,35 +28,36 @@ import { memo, useCallback,  useState } from "react";
 
 */
 
-
 /**
  * | `useCallback vs useMemo` Difference Between
- * -----------------------------------------------  
+ * -----------------------------------------------
  * `UseMemo` Use For *String ,Number , Object Array etc. - its Memorize expensive calculation. its Runs When You Given A Dipendency *  Changed  |
  * `UseCallBack` Use For Function Return - its Memorize Function if Components Re-render. its Runs When You Given A Dipendency * * *  Changed   |
  */
-const UseCallback = () => {
-  const [count, setCount] = useState(0);
 
-  const click = useCallback(() => {
-    console.log("Click ME !");
-  }, []);
+// import { memo, useCallback,  useState } from "react";
+// const UseCallback = () => {
+//   const [count, setCount] = useState(0);
 
-  return (
-    <div>
-      UseCallBack
-      <br></br>
-      <br></br>
-      <button onClick={() => setCount(count + 1)}>Count {count}</button>
-      <br></br>
-      <br></br>
-      <Demo click={click} />
-    </div>
-  );
-};
+//   const click = useCallback(() => {
+//     console.log("Click ME !");
+//   }, []);
 
-const Demo = memo(function ({ click }) {
-  return <button onClick={click}>console</button>;
-});
+//   return (
+//     <div>
+//       UseCallBack
+//       <br></br>
+//       <br></br>
+//       <button onClick={() => setCount(count + 1)}>Count {count}</button>
+//       <br></br>
+//       <br></br>
+//       <Demo click={click} />
+//     </div>
+//   );
+// };
+
+// const Demo = memo(function ({ click }) {
+//     return <button onClick={click}>console</button>;
+// });
 
 export default UseCallback;

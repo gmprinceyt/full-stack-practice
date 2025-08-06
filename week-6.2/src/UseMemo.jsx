@@ -8,7 +8,6 @@
 | You need to **perform a side effect** (like fetching, setting title, or DOM work) | `useEffect` |
 | You **need to update state** based on a side effect                               | `useEffect` |
 | You only need the **computed value in render**                                    | `useMemo`   |
-
  */
 
 
