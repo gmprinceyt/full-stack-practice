@@ -1,5 +1,5 @@
 import "./App.css";
-import { useRecoilValue, useSetRecoilState } from "recoil";
+import { useRecoilValue, useSetRecoilState, useSe } from "recoil";
 import { CountAtom } from "./atoms";
 
 function App() {
@@ -17,6 +17,7 @@ const Count = () => {
   console.log("Count render ");
 
   const count = useRecoilValue(CountAtom);
+  const selector = useSele
 
 
 
