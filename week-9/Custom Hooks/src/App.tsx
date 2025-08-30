@@ -29,15 +29,15 @@ class Mycomponent extends Component {
   }
 }
 
-function Mycomponent() {
-  useEffect(() => {
-    console.log("component Mounted");
-    return () => {
-      console.log("component unmount");
-    };
-  }, []);
+// function Mycomponent() {
+//   useEffect(() => {
+//     console.log("component Mounted");
+//     return () => {
+//       console.log("component unmount");
+//     };
+//   }, []);
 
-  return <>My Components </>;
-}
+//   return <>My Components </>;
+// }
 
 export default App;
