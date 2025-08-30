@@ -1,24 +1,24 @@
 import { useEffect, useState } from "react";
 
 const Todo = () => {
-  const { data, loading, error, isError } = useTodos();
+  const { data, loading, error, isError } = useTodos(10);
+  console.log("re-render hippen");
 
-  if (isError) return <div>{error?.message}</div>
+  if (isError) return <div>{error?.message}</div>;
+  if (loading)
+    return <div className="flex items-center justify-center ">loading...</div>;
 
-  console.log(loading)
   return (
-    <>
-      {
-        loading ? data?.data.map((todo) => {
-        return <TodoItem key={todo._id} {...todo} />;
-      }) : <p>loading...</p>
-      }
-    </>
+    <div className="p-4 ">
+      {data?.data.map((todo) => (
+        <TodoItem key={todo._id} {...todo} />
+      ))}
+    </div>
   );
 };
 
 // Custom Hooks
-const useTodos = () => {
+const useTodos = (n: number) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<Error>();
   const [isError, setIserror] = useState(false);
@@ -27,7 +27,6 @@ const useTodos = () => {
   );
   // Fetch Data From Server
   async function getTodos() {
-    setLoading(false);
     const url = `${import.meta.env.VITE_SERVER}/todo/all`;
     try {
       const res = await fetch(url);
@@ -39,14 +38,20 @@ const useTodos = () => {
         setError(error);
       }
     } finally {
-      setLoading(true);
+      setLoading(false);
     }
   }
 
   useEffect(() => {
-    console.log("mounted");
     getTodos();
-  }, []);
+    const timeout = setInterval(() => {
+      getTodos();
+    }, n * 1000);
+
+    return () => {
+      clearInterval(timeout);
+    };
+  }, [n]);
 
   return { data, loading, isError, error };
 };
@@ -80,8 +85,7 @@ const TodoItem = ({
   );
 };
 
-
-//  Type Defination 
+//  Type Defination
 type DataRecieveType = {
   _id: string;
   title: string;
