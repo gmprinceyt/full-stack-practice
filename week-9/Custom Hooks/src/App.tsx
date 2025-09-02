@@ -5,7 +5,7 @@ function App() {
   const [render, setRender] = useState(true);
 
   useEffect(() => {
-    console.log("app")
+    console.log("app");
     setInterval(() => {
       setRender((p) => !p);
     }, 4000);
