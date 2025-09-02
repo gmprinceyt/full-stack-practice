@@ -1,16 +1,13 @@
 import { useEffect, useState } from "react";
-import { useInterval } from "./PerformanceHooks";
 
 const App = () => {
-  const [count, setCount] = useState(0);
-  useInterval(function () {
-    setCount((p) => p + 1);
-  }, 200);
-
+  const { innerWidth, innerHeight } = useDimensions();
   return (
-    <div className="flex flex-col  justify-center w-full h-screen items-center ">
+    <div className="flex flex-col overflow-hidden justify-center w-full h-screen items-center ">
       <strong>Cohort 2.0</strong>
-      <p>Timeout {count}</p>
+      <div className="flex  justify-center w-full h-screen items-center ">
+        Current Window Dimension - X:{innerHeight} , Y:{innerWidth}
+      </div>
     </div>
   );
 };
@@ -37,17 +34,18 @@ const useMousePointer = () => {
   }, []);
   return mousePosition;
 };
-type TMouesPosition = {
-  clientX: number;
-  clientY: number;
-};
-/**
- * useMousePointer Usecase , Component
+
+/*
+ * !useMousePointer Usecase , Component
  *   const { clientX, clientY } = useMousePointer(); 
  * <div className="flex  justify-center w-full h-screen items-center ">
     Current mouse position - X:{clientX} , Y:{clientY}
     </div>
  */
+type TMouesPosition = {
+  clientX: number;
+  clientY: number;
+};
 
 const useIsOnline = () => {
   const [isOnline, SetIsOnline] = useState<Boolean>(window.navigator.onLine);
@@ -73,3 +71,25 @@ const useIsOnline = () => {
 * isOnline ? <h3 className="text-xl p-2 bg-green-900 border border-green-400 rounded-md text-white">You are online yay! 😍</h3> : * * <h3 * className="text-xl bg-red-900 p-2 border border-red-400 rounded-md text-white">You are offline, please connect to the * * * * internet 😒</* h3>
 */
 
+const useDimensions = () => {
+  const [dimension, setDimension] = useState<TWindowDimension>({
+    innerHeight: window.innerHeight,
+    innerWidth: window.innerWidth,
+  });
+  useEffect(() => {
+    function resizeHandle() {
+      setDimension({
+        innerHeight: window.innerHeight,
+        innerWidth: window.innerWidth
+      })
+    }
+    window.addEventListener("resize", resizeHandle);
+    return ()=> window.removeEventListener("resize", resizeHandle);
+  });
+
+  return dimension;
+};
+type TWindowDimension = {
+  innerHeight: number;
+  innerWidth: number;
+};
