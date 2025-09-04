@@ -164,3 +164,131 @@
 // ];
 
 // console.log(isLegal(users));
+
+// abstract class Shape {
+//   abstract name: string;
+
+//   abstract calculateArea(): number;
+
+//   describe(): void {
+//     console.log(`This shape is a ${this.name} with an area of ${this.calculateArea()} units squared.`);
+//   }
+// };
+
+// class Rectangle extends Shape {
+//   name = "Rectangle";
+
+//   constructor(public width: number, public height: number) {
+//     super();
+//   }
+
+//   // Implement the abstract method
+//   calculateArea(): number {
+//     return this.width * this.height;
+//   }
+// }
+
+// // Another subclass implementing the abstract class
+// class Circle extends Shape {
+//   name = "Circle";
+
+//   constructor(public radius: number) {
+//     super();
+//   }
+
+//   // Implement the abstract method
+//   calculateArea(): number {
+//     return Math.PI * this.radius * this.radius;
+//   }
+// };
+
+// const circle = new Circle(12);
+// const rectangle = new Rectangle(50, 50);
+// console.log(circle.describe())
+// console.log(rectangle.describe())
+
+// Enums
+
+enum Drection {
+  Up,
+  Down,
+  Right,
+  Left,
+}
+
+/**
+ * 
+ * @param keyword {
+  '0': 'Up',   
+  '1': 'Down', 
+  '2': 'Right',
+  '3': 'Left', 
+  Up: 0,
+  Down: 1,
+  Right: 2,
+  Left: 3
+}
+ * @returns 0
+ */
+
+function keyPress(keyword: Drection) {
+  if (keyword === Drection.Up) {
+    console.log(Drection);
+  }
+  return 0;
+}
+
+//console.log(keyPress(Drection.Up));
+
+enum StatusCode {
+  /**
+   * if Responese Success Status
+   *
+   * This interim response indicates that everything so far is OK and that the client should continue with the request or ignore it if it is already finished.
+   */
+  Success = 200,
+  /**
+   * if Responese Not Found in Database Status
+   *
+   * This interim response indicates that everything so far is OK and that the client should continue with the request or ignore it if it is already finished.
+   */
+  NotFound = 404,
+  Created = 201,
+  Error = 500,
+}
+
+/**
+ * 
+ * @param statusCode StatusCode
+ * {
+  '200': 'Success',
+  '201': 'Created',
+  '404': 'NotFound',
+  '500': 'Error',
+  Success: 200,
+  NotFound: 404,
+  Created: 201,
+  Error: 500
+}
+ * @returns StatusCode - Enum 
+ */
+
+function getRequest(statusCode: StatusCode) {
+  console.log(StatusCode);
+  return statusCode;
+}
+
+//console.log(getRequest(StatusCode.Success)); //200
+
+// enum Some {
+//     Left = 1,
+//     Right, // 2
+//     bottom //3
+// }
+
+// enum Some1 {
+//     Left = 10,
+//     Right, // 11
+//     bottom // 12
+// };
+// console.log(Some)
