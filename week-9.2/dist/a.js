@@ -13,6 +13,13 @@ function keyPress(keyword) {
     }
     return 0;
 }
+var Direction;
+(function (Direction) {
+    Direction["Up"] = "UP";
+    Direction["Down"] = "Down";
+    Direction["Left"] = "Left";
+    Direction["Right"] = "Right";
+})(Direction || (Direction = {}));
 var StatusCode;
 (function (StatusCode) {
     StatusCode[StatusCode["Success"] = 200] = "Success";
@@ -20,23 +27,19 @@ var StatusCode;
     StatusCode[StatusCode["Created"] = 201] = "Created";
     StatusCode[StatusCode["Error"] = 500] = "Error";
 })(StatusCode || (StatusCode = {}));
-;
 function getRequest(statusCode) {
     console.log(StatusCode);
     return statusCode;
 }
+function firstElement(arr) {
+    return arr[0];
+}
 ;
-var Some;
-(function (Some) {
-    Some[Some["Left"] = 1] = "Left";
-    Some[Some["Right"] = 2] = "Right";
-    Some[Some["bottom"] = 3] = "bottom";
-})(Some || (Some = {}));
-var Some1;
-(function (Some1) {
-    Some1[Some1["Left"] = 10] = "Left";
-    Some1[Some1["Right"] = 11] = "Right";
-    Some1[Some1["bottom"] = 12] = "bottom";
-})(Some1 || (Some1 = {}));
+const f = firstElement(["Prince", 1]);
+function firstEl(arr) {
+    return arr[0];
+}
 ;
-console.log(Some);
+let name = firstEl(["Prince", "Hello"]);
+name = name.toUpperCase();
+console.log(name);

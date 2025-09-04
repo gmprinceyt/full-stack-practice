@@ -238,6 +238,13 @@ function keyPress(keyword: Drection) {
   return 0;
 }
 
+enum Direction {
+  Up = "UP",
+  Down = "Down",
+  Left = "Left",
+  Right = "Right",
+}
+
 //console.log(keyPress(Drection.Up));
 
 enum StatusCode {
@@ -291,4 +298,29 @@ function getRequest(statusCode: StatusCode) {
 //     Right, // 11
 //     bottom // 12
 // };
-// console.log(Some)
+// console.log(Some);
+
+// Generics
+
+/**
+ * Problem Statement
+ * Let’s say you have a function that needs to return the first element of an array. Array can be of type either string or integer.
+ */
+
+type TFE = number | string;
+
+function firstElement(arr: TFE[]) {
+  return arr[0];
+}
+
+const f = firstElement(["Prince", 1]);
+// f.toUpperCase(); // I can'nt do this becuase of type is TFE
+
+// Solution
+function firstEl<T>(arr: T[]): T {
+  return arr[0]!;
+}
+
+let name = firstEl(["Prince", "Hello"]);
+name = name.toUpperCase(); // Now i can do any String method as well
+// console.log(name);
