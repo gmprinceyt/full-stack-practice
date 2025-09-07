@@ -14,18 +14,18 @@ import pg from "pg";
 // const res =  await client.query('SELECT NOW()')
 // await client.end();
 // console.log(res.rows);
-// local Setup
-const { Client } = pg;
-const client = new Client({
-    user: "postgres",
-    database: "mydb",
-    host: "localhost",
-    port: 5432,
-    password: "PRINCE123",
-});
-await client.connect().then(() => {
-    console.log("Connented To Postgres Database");
-});
+// // local Setup
+// const { Client } = pg;
+// const client = new Client({
+//   user: "postgres",
+//   database: "mydb",
+//   host: "localhost",
+//   port: 5432,
+//   password: "PRINCE123",
+// });
+// await client.connect().then(()=> {
+//     console.log("Connented To Postgres Database")
+// });
 async function CreateUsersTable() {
     const res = await client.query(` 
     CREATE TABLE users (
@@ -60,4 +60,40 @@ async function InsertData(username, email, password) {
     const res = await client.query(query, values);
     console.log(res.command);
 }
-InsertData("PrinceKumar", "gmprince420@gmail.com", "Prince123");
+// InsertData("PrinceKumar", "gmprince420@gmail.com", "Prince123");
+// ======================================================================================================
+const { Client } = pg;
+// Creating a Client Instance
+const client = new Client({
+    user: "postgres",
+    database: "mydb",
+    host: "localhost",
+    port: 5432,
+    password: "PRINCE123",
+});
+async function getUser(email) {
+    try {
+        await client.connect();
+        const query = "SELECT * FROM users WHERE email = $1;";
+        const values = [email];
+        // Sql Query
+        const result = await client.query(query, values);
+        if (result.rows.length > 0) {
+            console.log("User found:", result.rows[0]); // Output user data
+            return result.rows[0];
+        }
+        else {
+            console.log('No user found with the given email.');
+            return null;
+        }
+    }
+    catch (error) {
+        console.log("Error During the fatching Data", error);
+        throw error;
+    }
+    finally {
+        await client.end();
+    }
+}
+;
+getUser("gmprince420@gmail.com").catch(console.error);
